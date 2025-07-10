@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="client_consola_config_settings_view" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.github.brokerlink</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="8"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="GitHub Brokerlink" string="GitHub Brokerlink" name="github_config"
+                     groups="base.group_system">
+                    <div
+                            class="app_settings_block"
+                            data-string="Configuración GitHub"
+                            id="github_brokerlink"
+                            string="GitHub Brokerlink"
+                            data-key="rs_admin_console"
+                            groups="base.group_user"
+                    >
+                        <div class="text-end mt16">
+                            <button name="action_test_github_connection"
+                                    string="Probar conexión a GitHub"
+                                    type="object"
+                                    class="btn btn-primary"/>
+                        </div>
+
+                        <h2>Configuración de GitHub para Brokerlink</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Token de GitHub</span>
+                                    <div class="text-muted content-group mt16">
+                                        <field name="github_token" password="True" placeholder="ghp_XXXXXXXXXXXX"/>
+                                    </div>
+
+                                    <span class="o_form_label mt16">Repositorio</span>
+                                    <div class="text-muted content-group mt8">
+                                        <field name="github_repo" placeholder="ej. MBP-Odoo/brokerlink"/>
+                                    </div>
+
+                                    <span class="o_form_label mt16">Rama</span>
+                                    <div class="text-muted content-group mt8">
+                                        <field name="github_branch" placeholder="ej. main"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </app>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="action_config_settings_github_brokerlink" model="ir.actions.act_window">
+        <field name="name">Configuración GitHub Brokerlink</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'bin_size': False}</field>
+    </record>
+
+</odoo>

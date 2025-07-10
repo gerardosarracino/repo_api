@@ -1,0 +1,25 @@
+{
+    'name': 'RS Admin Console',
+    'version': '1.0',
+    'category': 'Tools',
+    'summary': 'Gestor de administraciòn de instancias de Odoo RS',
+    'description': 'Permite gestionar y monitorizar instancias de RS Odoo, incluyendo pruebas de API y gestión de clientes.',
+    'author': 'Erik David MR',
+    'depends': ['base', 'mail'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/api_endpoint_views.xml',
+        'views/api_test_result_views.xml',
+        'views/api_environment_views.xml',
+        'views/client_console_views.xml',
+        'views/rs_state_modules_customer.xml',
+        'views/res_config_settings_views.xml',
+        'views/res_partner_views.xml',
+        'views/menus.xml',
+        'data/cron.xml'
+    ],
+    'installable': True,
+    'auto_install': True,
+    'application': True,
+    'license': 'LGPL-3',
+}

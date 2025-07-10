@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_uhuu_root"
+              name="RS Admin Consola"
+              web_icon="rs_admin_console,static/description/icon.png"
+              sequence="10"/>
+
+    <menuitem id="admon_consola"
+              name="Consola de Administración"
+              parent="menu_uhuu_root"
+              action="action_client_consola"
+              sequence="1"/>
+
+    <menuitem id="menu_uhuu_api_test"
+              name="Uhuu API"
+              sequence="2"
+              parent="menu_uhuu_root"/>
+
+    <menuitem id="menu_git_repos"
+              name="Status de modulos"
+              action="action_git_modules"
+              sequence="3"
+              parent="menu_uhuu_root"/>
+
+    <menuitem id="menu_uhuu_endpoint"
+              name="Endpoints"
+              sequence="1"
+              parent="menu_uhuu_api_test"
+              action="action_uhuu_api_endpoint"/>
+
+    <menuitem id="menu_uhuu_result"
+              name="Resultados"
+              sequence="2"
+              parent="menu_uhuu_api_test"
+              action="action_uhuu_api_test_result"/>
+
+    <menuitem id="menu_uhuu_environment"
+              name="Entornos"
+              sequence="3"
+              parent="menu_uhuu_api_test"
+              action="action_uhuu_api_environment"/>
+
+    <menuitem id="admon_config"
+              name="Configuraciones"
+              parent="menu_uhuu_root"
+              sequence="10"/>
+
+    <menuitem id="menu_uhuu_github"
+              name="Configuraciones Github"
+              sequence="1"
+              parent="admon_config"
+              groups="base.group_user"
+              action="action_config_settings_github_brokerlink"/>
+
+
+</odoo>

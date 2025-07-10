@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_uhuu_api_environment_form" model="ir.ui.view">
+        <field name="name">uhuu.api.environment.form</field>
+        <field name="model">uhuu.api.environment</field>
+        <field name="arch" type="xml">
+            <form string="Entorno de Pruebas">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="base_url"/>
+                        <field name="token"/>
+                        <field name="default"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_uhuu_api_environment_tree" model="ir.ui.view">
+        <field name="name">uhuu.api.environment.tree</field>
+        <field name="model">uhuu.api.environment</field>
+        <field name="arch" type="xml">
+            <tree string="Entornos">
+                <field name="name"/>
+                <field name="base_url"/>
+                <field name="default"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_uhuu_api_environment" model="ir.actions.act_window">
+        <field name="name">Entornos</field>
+        <field name="res_model">uhuu.api.environment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

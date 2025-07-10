@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_rs_state_modules_customer_tree" model="ir.ui.view">
+            <field name="name">rs.module.status.tree</field>
+            <field name="model">rs.module.status</field>
+            <field name="arch" type="xml">
+                <tree string="State Modules Customer">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="installed"/>
+                    <field name="installed_version"/>
+                    <field name="repo_version"/>
+                    <field name="last_update"/>
+                    <field name="module_updated"/>
+                    <field name="summary"/>
+                    <field name="last_chek"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_rs_state_modules_customer_form" model="ir.ui.view">
+            <field name="name">rs.module.status.form</field>
+            <field name="model">rs.module.status</field>
+            <field name="arch" type="xml">
+                <form string="State Modules Customer">
+                    <header>
+                        <button name="action_install_module"
+                                type="object"
+                                string="📦 Instalar"
+                                class="btn btn-primary"
+                                invisible="installed"/>
+
+                        <button name="action_upgrade_module"
+                                type="object"
+                                string="🔄 Actualizar"
+                                class="btn btn-secondary"
+                                invisible="not installed"/>
+
+                        <button name="action_uninstall_module"
+                                type="object"
+                                string="🗑️ Desinstalar"
+                                class="btn btn-danger"
+                                invisible="not installed"/>
+
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                            <field name="installed"/>
+                            <field name="installed_version"/>
+                            <field name="repo_version"/>
+                            <field name="last_update"/>
+                            <field name="module_updated"/>
+                            <field name="last_chek"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Acción para abrir la vista de consola del cliente -->
+        <record id="action_git_modules" model="ir.actions.act_window">
+            <field name="name">Estatus de los mòdulos</field>
+            <field name="view_mode">tree,form</field>
+            <field name="res_model">rs.module.status</field>
+        </record>
+
+
+    </data>
+</odoo>

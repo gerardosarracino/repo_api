@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Vista tipo Tree -->
+    <record id="view_client_consola_tree" model="ir.ui.view">
+        <field name="name">client.consola.tree</field>
+        <field name="model">client.consola</field>
+        <field name="arch" type="xml">
+            <tree string="Consolas de Cliente">
+                <field name="partner_id"/>
+                <field name="date_last_check_api"/>
+                <field name="status_last_check_api"/>
+                <field name="percentage_passed_api" widget="progressbar"/>
+                <field name="date_last_check_github"/>
+                <field name="actualizado" widget="boolean_toggle" string="Git Update"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista tipo Form -->
+    <record id="view_client_consola_form" model="ir.ui.view">
+        <field name="name">client.consola.form</field>
+        <field name="model">client.consola</field>
+        <field name="arch" type="xml">
+            <form string="Consola del Cliente">
+                <header>
+
+                    <button name="action_ejecutar_pruebas_api" type="object" string="Ejecutar Pruebas API"
+                            class="oe_highlight"/>
+                    <button name="action_consultar_shas"
+                            type="object"
+                            string="Actualizar SHA Git"
+                            class="btn btn-secondary"
+                            icon="fa-refresh"/>
+                    <button name="action_actualizar_modulos_repo"
+                            type="object"
+                            string="📦 Cargar desde Repositorio"
+                            class="oe_highlight"/>
+                    <button name="action_verificar_estado_modulos_odoo"
+                            type="object"
+                            string="🔍 Verificar Instalación Odoo"
+                            class="btn-secondary"/>
+
+                    <field name="status_last_check_api" widget="statusbar" options="{'clickable': False}"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object"
+                                name="action_ver_resultados_test"
+                                class="oe_stat_button"
+                                icon="fa-list">
+                            <field name="test_result_count" widget="statinfo" string="API Results"/>
+                        </button>
+                        <button type="object"
+                                name="action_ver_modulos_instalados"
+                                class="oe_stat_button"
+                                icon="fa-cogs">
+                            <field name="count_modules_installed" widget="statinfo" string="Módulos Status"/>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="partner_id"/>
+                    </group>
+                    <group string="Sección UHUU API">
+                        <field name="date_last_check_api"/>
+                        <field name="status_last_check_api"/>
+                        <field name="percentage_passed_api" widget="progressbar"/>
+                    </group>
+                    <group string="Sección GitHub (Próximamente)">
+                        <field name="sha_master"/>
+                        <field name="fecha_sha_master"/>
+                        <field name="sha_remoto"/>
+                        <field name="actualizado" widget="boolean_button"/>
+
+                        <field name="date_last_check_github"/>
+                        <field name="status_last_check_github"/>
+                        <field name="percentage_passed_github" widget="progressbar"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acción para abrir la vista de consola del cliente -->
+    <record id="action_client_consola" model="ir.actions.act_window">
+        <field name="name">Consola del Cliente</field>
+        <field name="view_mode">tree,form</field>
+        <field name="res_model">client.consola</field>
+    </record>
+
+</odoo>

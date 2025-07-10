@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<odoo>
+
+    <record id="ir_cron_uhuu_client_console_auto" model="ir.cron">
+        <field name="name">[Uhuu] Ejecutar pruebas de todos los clientes</field>
+        <field name="model_id" ref="model_client_consola"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_ejecutar_pruebas_todos_los_clientes()</field>
+        <field name="interval_number">5</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="active">True</field>
+    </record>
+
+</odoo>
+

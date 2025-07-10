@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="view_uhuu_api_endpoint_form" model="ir.ui.view">
+        <field name="name">uhuu.api.endpoint.form</field>
+        <field name="model">uhuu.api.endpoint</field>
+        <field name="arch" type="xml">
+            <form string="Endpoint Uhuu">
+                <header>
+                    <button name="probar_endpoint"
+                            type="object" string="Probar ahora"
+                            class="btn-primary"/>
+                    <field name="state" widget="statusbar" readonly="1"
+                           statusbar_colors="{'test_ok': 'success', 'test_failed': 'danger'}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group name="Configuración del Endpoint">
+                            <field name="name"/>
+                            <field name="method"/>
+                            <field name="route"/>
+                            <field name="type_login"/>
+                            <field name="endpoint_id_padre" invisible="type_login == True"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                        <group name="Datos">
+                            <field name="partner_id" invisible="not type_login"/>
+                            <field name="date_last_test" readonly="1"/>
+                            <label for="response">Último resultado</label>
+                            <field name="response" nolabel="1" readonly="1"
+                                   style="max-height: 200px; overflow-y: auto; white-space: pre-wrap; font-family: monospace; background-color: #f5f5f5; padding: 8px; border: 1px solid #ddd; border-radius: 4px;"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Body">
+                            <field name="body_json" widget="code" options="{'mode': 'python'}"
+                                   placeholder="Ingrese el cuerpo del request"/>
+                        </page>
+
+                        <page string="Query Params and Headers">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="query_params">Parámetros GET/DELETE</label>
+                                    <field name="query_params" widget="code" options="{'mode': 'python'}"
+                                           placeholder="Ingrese un diccionario"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="headers">Cabeceras JSON</label>
+                                    <field name="headers" widget="code" options="{'mode': 'python'}"
+                                           placeholder="Ingrese un diccionario"/>
+                                </div>
+                            </form>
+
+                        </page>
+                        <page string="Resultados">
+                            <field name="test_result_ids">
+                                <tree>
+                                    <field name="tested_at"/>
+                                    <field name="partner_id"/>
+                                    <field name="status_code"/>
+                                    <field name="success" invisible="1"/>
+                                    <field name="state" decoration-success="state == 'test_ok'"
+                                           decoration-danger="state == 'test_failed'"
+                                           widget="badge" optional="show"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_uhuu_api_endpoint_tree" model="ir.ui.view">
+        <field name="name">uhuu.api.endpoint.tree</field>
+        <field name="model">uhuu.api.endpoint</field>
+        <field name="arch" type="xml">
+            <tree string="Endpoints">
+                <field name="date_last_test"/>
+                <field name="name"/>
+                <field name="method"/>
+                <field name="route"/>
+                <field name="active" optional="hide"/>
+                <field name="state" decoration-success="state == 'test_ok'" decoration-danger="state == 'test_failed'"
+                       widget="badge" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_uhuu_api_endpoint" model="ir.actions.act_window">
+        <field name="name">Endpoints</field>
+        <field name="res_model">uhuu.api.endpoint</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
+

@@ -1,0 +1,87 @@
+<section class="oe_container oe_dark">
+    <div class="col-md-12">
+        <h2 class="oe_slogan" style="font-size: 35px;color:#2C0091"><b>Manual de Usuario - Uhuu API Tester</b></h2>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div style="align:center;">
+            <h1 style="text-align: center;">
+                <span align="center" style="color:#148963;">
+                    <span class="fa fa-plug"></span>
+                    Descripción General:</span>
+            </h1>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8" style="text-align:left;">
+                <p>
+                    Este módulo permite gestionar, ejecutar y registrar pruebas automáticas de endpoints API relacionados con clientes desde Odoo. Las pruebas pueden incluir autenticación (login) y operaciones GET/POST con estructura JSON, útiles para entornos como integraciones con Uhuu Chat.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:olive;">Objetivo</h2>
+        <div class="col-sm-10 col-sm-offset-1">
+            <p>
+                Proveer un entorno dentro de Odoo para configurar endpoints de prueba por cliente, registrar su respuesta y estatus, ejecutar pruebas masivas y analizar los resultados obtenidos con ayuda de IA.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:olive;">Guía de Uso</h2>
+        <ul style="font-size: 15px;">
+            <li>1. Crear un <b>entorno de pruebas</b> en el menú "Entornos".</li>
+            <li>2. Registrar uno o varios <b>endpoints</b>, indicando método, URL, parámetros, headers y si es un endpoint de tipo login.</li>
+            <li>3. Asociar los endpoints a un cliente usando el campo <b>Cliente asociado</b>.</li>
+            <li>4. Usar la <b>vista de Consola por Cliente</b> para ejecutar todas las pruebas del cliente con un solo clic.</li>
+            <li>5. Visualizar el porcentaje de éxito, histórico de pruebas, y usar el botón de "Resultados" para filtrar los test realizados.</li>
+            <li>6. Ejecutar análisis IA sobre respuestas fallidas para recibir recomendaciones de mejora.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:olive;">Configuraciones Recomendadas</h2>
+        <ul style="font-size: 15px;">
+            <li><b>Clave OpenAI</b>: configurar en "Parámetros del sistema" el valor <code>rs_admin_console.openai_key</code>.</li>
+            <li><b>Entorno por defecto</b>: marcar uno de los entornos como predeterminado para las pruebas.</li>
+            <li><b>Tokens de autenticación</b>: usar el endpoint de login para obtener tokens y reutilizarlos en los demás endpoints.</li>
+            <li><b>Relaciones</b>: usar correctamente los campos de vinculación con cliente (<code>partner_id</code>) para que el resumen de consola funcione.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:olive;">¿Necesitas Ayuda?</h2>
+        <div class="oe_slogan text-center">
+            <p>Si necesitas asistencia técnica o deseas extender la funcionalidad, contáctanos:</p>
+            <h3>Email: <a href="mailto:soporte@tudominio.com">soporte@tudominio.com</a></h3>
+            <div>
+                <a target="_blank" href="https://www.facebook.com/tupagina">
+                    <i class="fa fa-facebook-square" style="font-size:38px;"></i>
+                </a>
+                <a target="_blank" href="https://twitter.com/tupagina">
+                    <i class="fa fa-twitter" style="font-size:38px;"></i>
+                </a>
+                <a target="_blank" href="https://www.linkedin.com/in/tupagina">
+                    <i class="fa fa-linkedin" style="font-size:38px;"></i>
+                </a>
+                <a target="_blank" href="https://www.youtube.com/channel/tucanal">
+                    <i class="fa fa-youtube-play" style="font-size:38px;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr style="width: 100%;height: 4px;background: #148963;margin: 0px 0px;">
+<hr style="width: 100%;height: 4px;background: #2C0091;margin: 0px 0px;">

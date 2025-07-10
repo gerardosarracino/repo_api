@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_uhuu_api_test_result_form" model="ir.ui.view">
+        <field name="name">uhuu.api.test.result.form</field>
+        <field name="model">uhuu.api.test.result</field>
+        <field name="arch" type="xml">
+            <form string="Resultado de prueba de API">
+                <header>
+                    <button name="accion_comentario_ia"
+                            type="object" string="Generar análisis IA"
+                            class="oe_highlight"
+                            invisible="success"/>
+                    <field name="state" widget="statusbar" readonly="1"
+                           statusbar_colors="{'test_ok': 'success', 'test_failed': 'danger'}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="tested_at" readonly="1"/>
+                        <field name="partner_id" readonly="1"/>
+                        <field name="endpoint_id" readonly="1"/>
+                        <field name="environment_id" readonly="1"/>
+                        <field name="status_code" readonly="1"/>
+                        <field name="success" readonly="1"/>
+                        <label for="response">Último resultado</label>
+                        <field name="response" nolabel="1"
+                               style="max-height: 200px; overflow-y: auto; white-space: pre-wrap; font-family: monospace; background-color: #f5f5f5; padding: 8px; border: 1px solid #ddd; border-radius: 4px;"/>
+                        <field name="comentario_ia" widget="text" readonly="1"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_uhuu_api_test_result_tree" model="ir.ui.view">
+        <field name="name">uhuu.api.test.result.tree</field>
+        <field name="model">uhuu.api.test.result</field>
+        <field name="arch" type="xml">
+            <tree string="Resultados">
+                <field name="partner_id"/>
+                <field name="tested_at"/>
+                <field name="endpoint_id"/>
+                <field name="environment_id"/>
+                <field name="status_code"/>
+                <field name="success"/>
+                <field name="state" decoration-success="state == 'test_ok'" decoration-danger="state == 'test_failed'"
+                       widget="badge" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_uhuu_api_test_result" model="ir.actions.act_window">
+        <field name="name">Resultados</field>
+        <field name="res_model">uhuu.api.test.result</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
+
+

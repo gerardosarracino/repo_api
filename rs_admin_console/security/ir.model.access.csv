@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_uhuu_api_endpoint,access_uhuu_api_endpoint,model_uhuu_api_endpoint,base.group_user,1,1,1,1
+access_uhuu_api_environment,access_uhuu_api_environment,model_uhuu_api_environment,base.group_user,1,1,1,1
+access_uhuu_api_test_result,access_uhuu_api_test_result,model_uhuu_api_test_result,base.group_user,1,1,1,1
+access_uhuu_github_commit_log,access_uhuu_github_commit_log,model_uhuu_github_commit_log,base.group_user,1,1,1,1
+
+access_client_consola_user,access.client.consola.user,model_client_consola,base.group_user,1,1,1,0
+access_client_consola_manager,access.client.consola.manager,model_client_consola,base.group_system,1,1,1,1
+
+access_rs.module.status,access.rs.state.modules.customer,model_rs_module_status,base.group_user,1,1,1,0
+access_rs.module.status_manager,access.rs.state.modules.customer.manager,model_rs_module_status,base.group_system,1,1,1,1
